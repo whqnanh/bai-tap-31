@@ -5,11 +5,14 @@
     <title>Bài tập 31</title>
 </head>
 <body>
+    <h2>Tính tích các số chia hết cho 7</h2>
     <form onsubmit="handleSubmit(event)">
-        <input type="number" id="soDau" placeholder="Số đầu">
-        <input type="number" id="soCuoi" placeholder="Số cuối">
+        <input type="number" id="soDau" placeholder="Số đầu" required>
+        <input type="number" id="soCuoi" placeholder="Số cuối" required>
         <button type="submit">Tính</button>
     </form>
+
+    <h3 id="ketQua" style="color: blue;"></h3>
 
     <script>
         function handleSubmit(event) {
@@ -17,11 +20,14 @@
             const soDau = parseInt(document.getElementById("soDau").value);
             const soCuoi = parseInt(document.getElementById("soCuoi").value);
 
+            let min = Math.min(soDau, soCuoi);
+            let max = Math.max(soDau, soCuoi);
+
             let tich = 1;
             let coSo = false;
 
-            for (let i = soDau; i <= soCuoi; i++) {
-                if (i % 7 === 0) {
+            for (let i = min; i <= max; i++) {
+                if (i !== 0 && i % 7 === 0) {
                     tich *= i;
                     coSo = true;
                 }
@@ -29,8 +35,10 @@
 
             if (coSo) {
                 console.log("Tich: " + tich);
+                document.getElementById("ketQua").innerText = "Tích các số chia hết cho 7 là: " + tich;
             } else {
-                console.log("Khong co so chia het cho 7");
+                console.log("Không có số nào chia hết cho 7");
+                document.getElementById("ketQua").innerText = "Không có số nào chia hết cho 7";
             }
         }
     </script>
