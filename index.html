@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 31</title>
+</head>
+<body>
+    <form onsubmit="handleSubmit(event)">
+        <input type="number" id="soDau" placeholder="Số đầu">
+        <input type="number" id="soCuoi" placeholder="Số cuối">
+        <button type="submit">Tính</button>
+    </form>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const soDau = parseInt(document.getElementById("soDau").value);
+            const soCuoi = parseInt(document.getElementById("soCuoi").value);
+
+            let tich = 1;
+            let coSo = false;
+
+            for (let i = soDau; i <= soCuoi; i++) {
+                if (i % 7 === 0) {
+                    tich *= i;
+                    coSo = true;
+                }
+            }
+
+            if (coSo) {
+                console.log("Tich: " + tich);
+            } else {
+                console.log("Khong co so chia het cho 7");
+            }
+        }
+    </script>
+</body>
+</html>
